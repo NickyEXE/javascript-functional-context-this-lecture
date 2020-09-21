@@ -2,7 +2,13 @@
 // "Invocation Context"
 
 // as a function (baseless function)
+
+// thisLogger()
+//  window
+
 // as a method
+//  object that i've called it in
+
 // via a method of the function object
 // as a contructor
 
@@ -15,8 +21,10 @@ function locationLogger() {
 }
 
 const listMembers = function() {
+	console.log("in the outer function: ", this)
 	this.members.forEach(function(member) {
-	  console.log(`Member: ${member.name}`)
+		console.log("in the inner function: ", this)
+	  console.log(`${member.name} is a member of ${this.name}`)
 	})
 }
 

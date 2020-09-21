@@ -22,12 +22,10 @@ function locationLogger() {
 
 const listMembers = function() {
 	console.log("in the outer function: ", this)
-	this.members.forEach(function(member) {
-		console.log("in the inner function: ", this)
+	this.members.forEach((member) => {
 	  console.log(`${member.name} is a member of ${this.name}`)
 	})
 }
-
 
 const ewf = {
 	name: "Earth, Wind, and Fire",
@@ -72,4 +70,51 @@ const bgs = {
 	],
 	listMembers: listMembers
 
+}
+
+// Factory Pattern
+// function bandFactory(name, membersArray){
+	// function list(){
+	// 	this.members.forEach((member) => {
+	// 		console.log(`${member.name} is a member of ${this.name}`)
+	// 	})
+	// }
+// 	return {
+// 		name: name,
+// 		members: membersArray.map(member => ({name: member})),
+// 		listMembers: list
+// 	}
+// }
+
+// Constructor function
+
+// function Band(name, members){
+// 	this.name = name
+// 	this.members = members.map(member => ({name: member}))
+// }
+
+// // Band.prototype.list = function(){
+// 	this.members.forEach((member) => {
+// 		console.log(`${member.name} is a member of ${this.name}`)
+// 	})
+// }
+
+class Band {
+	static all = []
+	constructor(name, members){
+		this.name = name
+		this.members = members.map(member => ({name: member}))
+		this.constructor.all.push(this)
+	}
+
+	list(){
+		console.log(this)
+		this.members.forEach((member) => {
+			console.log(`${member.name} is a member of ${this.name}`)
+		})
+	}
+
+	static whoAmI(){
+		console.log(this)
+	}
 }

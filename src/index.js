@@ -3,15 +3,6 @@
 
 // as a function (baseless function)
 
-// thisLogger()
-//  window
-
-// as a method
-//  object that i've called it in
-
-// via a method of the function object
-// as a contructor
-
 function thisLogger() {
 	console.log(this)
 }
@@ -69,35 +60,33 @@ const bgs = {
 		{name: 'Steve Guttenburg'}
 	],
 	listMembers: listMembers
-
 }
 
 // Factory Pattern
-// function bandFactory(name, membersArray){
-	// function list(){
-	// 	this.members.forEach((member) => {
-	// 		console.log(`${member.name} is a member of ${this.name}`)
-	// 	})
-	// }
-// 	return {
-// 		name: name,
-// 		members: membersArray.map(member => ({name: member})),
-// 		listMembers: list
-// 	}
-// }
+function bandFactory(name, membersArray){
+	function list(){
+		this.members.forEach((member) => {
+			console.log(`${member.name} is a member of ${this.name}`)
+		})
+	}
+	return {
+		name: name,
+		members: membersArray.map(member => ({name: member})),
+		listMembers: list
+	}
+}
 
 // Constructor function
+function Band(name, members){
+	this.name = name
+	this.members = members.map(member => ({name: member}))
+}
 
-// function Band(name, members){
-// 	this.name = name
-// 	this.members = members.map(member => ({name: member}))
-// }
-
-// // Band.prototype.list = function(){
-// 	this.members.forEach((member) => {
-// 		console.log(`${member.name} is a member of ${this.name}`)
-// 	})
-// }
+Band.prototype.list = function(){
+	this.members.forEach((member) => {
+		console.log(`${member.name} is a member of ${this.name}`)
+	})
+}
 
 class Band {
 	static all = []

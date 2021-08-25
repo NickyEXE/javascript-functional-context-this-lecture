@@ -6,6 +6,8 @@
 // via a method of the function object
 // as a contructor
 
+const button = document.getElementById("button")
+
 function thisLogger() {
 	console.log(this)
 }
@@ -19,7 +21,6 @@ const listMembers = function() {
 	  console.log(`Member: ${member.name}`)
 	})
 }
-
 
 const ewf = {
 	name: "Earth, Wind, and Fire",

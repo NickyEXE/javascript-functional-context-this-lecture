@@ -7,20 +7,30 @@
 // as a contructor
 
 const button = document.getElementById("button")
+button.addEventListener("click", thisLogger)
 
 function thisLogger() {
 	console.log(this)
 }
 
-function locationLogger() {
+// thisLogger() => global scope
+// ewf.thisLogger() => called as a method, this is going to be ewf
+
+
+function locationLogger(){
 	console.log(this.location)
 }
 
+// const that = this
+// .bind(this)
+
 const listMembers = function() {
-	this.members.forEach(function(member) {
-	  console.log(`Member: ${member.name}`)
+	this.members.forEach((member) => {
+	  console.log(`Member: ${member.name} is a member of ${this.name}`)
 	})
 }
+
+// call, bind
 
 const ewf = {
 	name: "Earth, Wind, and Fire",

@@ -1,3 +1,5 @@
+require 'pry'
+
 class Character
   attr_reader :name, :ability
 
@@ -11,3 +13,5 @@ class Character
   end
 
 end
+
+binding.pry
